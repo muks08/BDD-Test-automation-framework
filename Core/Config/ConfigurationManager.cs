@@ -10,7 +10,8 @@ namespace Core
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(Path.Combine("Config", "webdriverconfig.json"));
+                .AddJsonFile(Path.Combine("Config", "webdriverconfig.json"))
+                .AddJsonFile(Path.Combine("Config", "appsettings.json"));
 
             configuration = builder.Build();
         }
@@ -18,6 +19,11 @@ namespace Core
         public static string GetBrowser()
         {
             return configuration["WebDriver:Browser"];
+        }
+
+        public static string GetEnvironmentUrl(string environmentName)
+        {
+            return configuration[$"Environments:{environmentName}"];
         }
     }
 }

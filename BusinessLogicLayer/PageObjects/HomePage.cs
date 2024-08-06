@@ -2,22 +2,11 @@
 
 namespace BusinessLogicLayer.PageObjects
 {
-    public class HomePage
+    public class HomePage : BasePage
     {
-        private readonly IWebDriver _driver;
-        private const string Url = "https://www.google.com";
-
         private IWebElement SearchField => _driver.FindElement(By.Name("q"));
 
-        public HomePage(IWebDriver driver)
-        {
-            _driver = driver;
-        }
-
-        public void NavigateTo()
-        {
-            _driver.Navigate().GoToUrl(Url);
-        }
+        public HomePage(IWebDriver driver) : base(driver) { }
 
         public void EnterSearchTerm(string searchTerm)
         {

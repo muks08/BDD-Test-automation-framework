@@ -36,7 +36,7 @@ namespace Core
                     throw new Exception("Browser not supported");
             }
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
             driver.Manage().Window.Maximize();
 
             return driver;

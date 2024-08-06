@@ -10,6 +10,12 @@ namespace Tests.StepDefinitions
     {
         private IWebDriver _driver;
         private HomePage _homePage;
+        private string _envUrl;
+
+        public GoogleSearchStepDefinitions()
+        {
+            _envUrl = ConfigurationManager.GetEnvironmentUrl("Production");
+        }
 
         [BeforeScenario]
         public void Setup()
@@ -27,7 +33,7 @@ namespace Tests.StepDefinitions
         [Given(@"I have navigated to the Google home page")]
         public void GivenIHaveNavigatedToTheGoogleHomePage()
         {
-            _homePage.NavigateTo();
+            _homePage.NavigateTo(_envUrl);
             _homePage.IsAt().Should().BeTrue("Google home page is not displayed.");
         }
 

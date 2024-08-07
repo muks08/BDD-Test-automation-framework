@@ -16,31 +16,38 @@ namespace Core
 
             IWebDriver driver;
 
-            switch (browser.ToLower())
+            try
             {
-                case "chrome":
-                    new DriverManager().SetUpDriver(new ChromeConfig());
-                    driver = new ChromeDriver();
-                    break;
+                switch (browser.ToLower())
+                {
+                    case "chrome":
+                        new DriverManager().SetUpDriver(new ChromeConfig());
+                        driver = new ChromeDriver();
+                        break;
 
-                case "firefox":
-                    new DriverManager().SetUpDriver(new FirefoxConfig());
-                    driver = new FirefoxDriver();
-                    break;
+                    case "firefox":
+                        new DriverManager().SetUpDriver(new FirefoxConfig());
+                        driver = new FirefoxDriver();
+                        break;
 
-                case "edge":
-                    new DriverManager().SetUpDriver(new EdgeConfig());
-                    driver = new EdgeDriver();
-                    break;
+                    case "edge":
+                        new DriverManager().SetUpDriver(new EdgeConfig());
+                        driver = new EdgeDriver();
+                        break;
 
-                default:
-                    throw new Exception("Browser not supported");
+                    default:
+                        throw new NotSupportedException($"Browser '{browser}' is not supported");
+                }
+
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+                driver.Manage().Window.Maximize();
+
+                return driver;
             }
-
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            driver.Manage().Window.Maximize();
-
-            return driver;
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Failed to create WebDriver instance.", ex);
+            }
         }
     }
 }

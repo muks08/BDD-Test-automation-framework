@@ -10,12 +10,9 @@ namespace Tests.StepDefinitions
     {
         private IWebDriver _driver;
         private HomePage _homePage;
-        private string _baseUrl;
+        private readonly string _baseUrl;
 
-        public GoogleSearchStepDefinitions()
-        {
-            _baseUrl = ConfigManager.AppSettings.Ui;
-        }
+        public GoogleSearchStepDefinitions() => _baseUrl = ConfigManager.AppSettings.Ui;
 
         [BeforeScenario]
         public void Setup()

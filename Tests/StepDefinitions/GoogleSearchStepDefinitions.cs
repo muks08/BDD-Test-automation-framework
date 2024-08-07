@@ -1,6 +1,5 @@
 using BusinessLogicLayer.PageObjects;
 using Core;
-using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace Tests.StepDefinitions

@@ -1,5 +1,6 @@
 using BusinessLogicLayer.PageObjects;
 using Core;
+using Core.Configuration;
 using OpenQA.Selenium;
 
 namespace Tests.StepDefinitions
@@ -9,11 +10,11 @@ namespace Tests.StepDefinitions
     {
         private IWebDriver _driver;
         private HomePage _homePage;
-        private string _envUrl;
+        private string _baseUrl;
 
         public GoogleSearchStepDefinitions()
         {
-            _envUrl = ConfigurationManager.GetEnvironmentUrl("Production");
+            _baseUrl = ConfigManager.AppSettings.Ui;
         }
 
         [BeforeScenario]
@@ -32,7 +33,7 @@ namespace Tests.StepDefinitions
         [Given(@"I have navigated to the Google home page")]
         public void GivenIHaveNavigatedToTheGoogleHomePage()
         {
-            _homePage.NavigateTo(_envUrl);
+            _homePage.NavigateTo(_baseUrl);
             _homePage.IsAt().Should().BeTrue("Google home page is not displayed.");
         }
 

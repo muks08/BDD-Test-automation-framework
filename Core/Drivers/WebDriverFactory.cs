@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Core.Configuration;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
@@ -7,11 +8,11 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace Core
 {
-    public class WebDriverFactory
+    public sealed class WebDriverFactory
     {
         public static IWebDriver CreateDriver()
         {
-            var browser = ConfigurationManager.GetBrowser();
+            var browser = ConfigManager.AppSettings.Browser;
 
             IWebDriver driver;
 

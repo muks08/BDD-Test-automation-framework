@@ -15,9 +15,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Config\webdriverconfig.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<None Update="Config\appSettings.PROD.json">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>

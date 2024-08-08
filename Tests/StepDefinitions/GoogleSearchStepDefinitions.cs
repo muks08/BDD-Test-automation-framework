@@ -1,7 +1,7 @@
-using BusinessLogicLayer.PageObjects;
 using Core;
 using Core.Configuration;
 using OpenQA.Selenium;
+using Services.PageObjects;
 
 namespace Tests.StepDefinitions
 {
@@ -12,7 +12,7 @@ namespace Tests.StepDefinitions
         private HomePage _homePage;
         private readonly string _baseUrl;
 
-        public GoogleSearchStepDefinitions() => _baseUrl = ConfigManager.AppSettings.Ui;
+        public GoogleSearchStepDefinitions() => _baseUrl = ConfigManager.AppSettings.BaseUiUrl;
 
         [BeforeScenario]
         public void Setup()

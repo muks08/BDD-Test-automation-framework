@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace BusinessLogicLayer.PageObjects
+namespace Services.PageObjects
 {
     public class BasePage
     {

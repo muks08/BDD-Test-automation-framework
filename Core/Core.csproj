@@ -15,14 +15,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Config\appSettings.PROD.json">
+		<None Update="Config\AppSettings\appSettings.PROD.json">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
-		<None Update="Config\appSettings.DEV.json">
+		<None Update="Config\AppSettings\appSettings.DEV.json">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
-		<None Include="Config\appSettings.$(Configuration).json">
-			<Link>Config\appConfig.json</Link>
+		<None Include="Config\AppSettings\appSettings.$(Configuration).json">
+			<Link>Config\AppSettings\appConfig.json</Link>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>

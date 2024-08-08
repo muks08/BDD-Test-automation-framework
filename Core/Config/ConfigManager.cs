@@ -1,4 +1,4 @@
-﻿using Core.Config;
+﻿using Core.Config.AppSettings;
 using Core.Utils;
 
 namespace Core.Configuration
@@ -15,7 +15,7 @@ namespace Core.Configuration
         {
             try
             {
-                var configPath = "Config/appConfig.json";
+                var configPath = "Config/AppSettings/appConfig.json";
                 if (!File.Exists(configPath))
                 {
                     throw new FileNotFoundException($"Configuration file not found: {configPath}");

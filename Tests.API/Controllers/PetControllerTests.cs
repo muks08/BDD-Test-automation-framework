@@ -16,7 +16,7 @@ namespace Tests.API.Controllers
         public async Task VerifyGetPetByIdReturns200()
         {
             // Arrange
-            var request = RequestFactory.Create(Method.Get, Paths.PetController);
+            var request = RequestFactory.Create(Method.Get, Paths.PetController + "1");
 
             // Act
             var response = await ApiService.ExecuteAsync<GetPetByIdResponseModel>(request);

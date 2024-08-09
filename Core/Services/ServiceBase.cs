@@ -1,4 +1,5 @@
 ﻿using NLog;
+using NLog.Config;
 using RestSharp;
 using System.Diagnostics;
 
@@ -8,7 +9,13 @@ namespace Core.Services
     {
         protected RestClient Client { get; }
         protected readonly Stopwatch Sw;
-        private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
+        private static readonly ILogger Logger;
+
+        static ServiceBase()
+        {
+            LogManager.Configuration = new XmlLoggingConfiguration("Config/NLog.config");
+            Logger = LogManager.GetCurrentClassLogger();
+        }
 
         public ServiceBase(string? baseUrl)
         {
@@ -39,14 +46,14 @@ namespace Core.Services
             {
                 var response = await Client.ExecuteAsync(request);
                 Sw.Stop();
-                Logger.Info($"Request took: {Sw.ElapsedMilliseconds / 1000} seconds");
+                Logger.Info($"Request took: {Sw.ElapsedMilliseconds} milliseconds");
 
                 return response;
             }
             catch (Exception ex)
             {
                 Sw.Stop();
-                Logger.Info($"Request took: {Sw.ElapsedMilliseconds / 1000} seconds");
+                Logger.Info($"Request took: {Sw.ElapsedMilliseconds} milliseconds");
                 Logger.Error(ex, $"{GetType().Name} failed to make HTTP request. Exception message: {ex.Message}");
                 throw new HttpRequestException($"{GetType().Name} failed to make HTTP request. Exception message: {ex.Message}", ex);
             }
@@ -64,14 +71,14 @@ namespace Core.Services
                 var response = await Client.ExecuteAsync(request);
                 var model = DeserializeResponse<T>(response);
                 Sw.Stop();
-                Logger.Info($"Request took: {Sw.ElapsedMilliseconds / 1000} seconds");
+                Logger.Info($"Request took: {Sw.ElapsedMilliseconds}  milliseconds");
 
                 return model;
             }
             catch (Exception ex)
             {
                 Sw.Stop();
-                Logger.Info($"Request took: {Sw.ElapsedMilliseconds / 1000} seconds");
+                Logger.Info($"Request took: {Sw.ElapsedMilliseconds}  milliseconds");
                 Logger.Error(ex, $"{GetType().Name} failed to make HTTP request. Exception message: {ex.Message}");
                 throw new HttpRequestException($"{GetType().Name} failed to make HTTP request. Exception message: {ex.Message}", ex);
             }

@@ -24,6 +24,9 @@
 		<None Update="Config\AppSettings\appSettings.DEV.json">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
+		<None Update="Config\NLog.config">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Include="Config\AppSettings\appSettings.$(Configuration).json">
 			<Link>Config\AppSettings\appConfig.json</Link>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -76,19 +76,16 @@ namespace Core.Utils
             }
         }
 
-        public static class InternetInfo
-        {
-            public static string GenerateUrlAddress()
-            {
-                return Faker.Internet.Url();
-            }
-        }
-
         public static class TextInfo
         {
             public static string GenerateWord()
             {
                 return Faker.Random.Word();
+            }
+
+            public static string GenerateSentence(int wordCount = 3)
+            {
+                return Faker.Lorem.Sentence(wordCount: wordCount);
             }
         }
 

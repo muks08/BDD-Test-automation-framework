@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace Services.PageObjects
+namespace Services.UI.PageObjects
 {
     public class HomePage : BasePage
     {

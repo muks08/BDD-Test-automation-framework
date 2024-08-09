@@ -1,7 +1,6 @@
-using Core;
-using Core.Configuration;
 using OpenQA.Selenium;
 using Services.PageObjects;
+using Tests.UI.StepDefinitions;
 
 namespace Tests.StepDefinitions
 {
@@ -12,24 +11,16 @@ namespace Tests.StepDefinitions
         private HomePage _homePage;
         private readonly string _baseUrl;
 
-        public GoogleSearchStepDefinitions() => _baseUrl = ConfigManager.AppSettings.BaseUiUrl;
-
-        [BeforeScenario]
-        public void Setup()
+        public GoogleSearchStepDefinitions()
         {
-            _driver = WebDriverFactory.CreateDriver();
-            _homePage = new HomePage(_driver);
-        }
-
-        [AfterScenario]
-        public void TearDown()
-        {
-            _driver.Quit();
+            _driver = Hooks.Driver;
+            _baseUrl = Hooks.BaseUrl;
         }
 
         [Given(@"I have navigated to the Google home page")]
         public void GivenIHaveNavigatedToTheGoogleHomePage()
         {
+            _homePage = new HomePage(_driver);
             _homePage.NavigateTo(_baseUrl);
             _homePage.IsAt().Should().BeTrue("Google home page is not displayed.");
         }

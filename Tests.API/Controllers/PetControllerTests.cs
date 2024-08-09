@@ -1,5 +1,5 @@
-﻿using RestSharp;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using RestSharp;
 using Services.API;
 using Services.API.Models.Response;
 using System.Net;

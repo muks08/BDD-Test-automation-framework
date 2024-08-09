@@ -15,12 +15,12 @@ namespace Tests.StepDefinitions
         {
             _driver = Hooks.Driver;
             _baseUrl = Hooks.BaseUrl;
+            _homePage = new HomePage(_driver);
         }
 
         [Given(@"I have navigated to the Google home page")]
         public void GivenIHaveNavigatedToTheGoogleHomePage()
         {
-            _homePage = new HomePage(_driver);
             _homePage.NavigateTo(_baseUrl);
             _homePage.IsAt().Should().BeTrue("Google home page is not displayed.");
         }

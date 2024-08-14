@@ -15,10 +15,10 @@ namespace Services.API.Models.PetController.Response
         public string? Name { get; set; }
 
         [JsonPropertyName("photoUrls")]
-        public List<object>? PhotoUrls { get; set; }
+        public List<string>? PhotoUrls { get; set; }
 
         [JsonPropertyName("tags")]
-        public List<object>? Tags { get; set; }
+        public List<Tag>? Tags { get; set; }
 
         [JsonPropertyName("status")]
         public string? Status { get; set; }

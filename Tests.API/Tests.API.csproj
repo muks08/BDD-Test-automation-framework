@@ -20,10 +20,4 @@
     <ProjectReference Include="..\Services.API\Services.API.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-	 <None Update="Config\NLog.config">
-	   <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-     </None>
-  </ItemGroup>
-
 </Project>

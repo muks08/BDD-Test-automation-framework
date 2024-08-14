@@ -9,7 +9,8 @@ namespace Core.Services
 
         static LoggerService()
         {
-            LogManager.Configuration = new XmlLoggingConfiguration("Config/NLog.config");
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            LogManager.Configuration = new XmlLoggingConfiguration(Path.Combine(baseDirectory, "Config/NLog.config"));
             Logger = LogManager.GetCurrentClassLogger();
         }
 

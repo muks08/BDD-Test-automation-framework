@@ -4,24 +4,23 @@ namespace Services.UI.PageObjects
 {
     public class HomePage : BasePage
     {
-        private IWebElement SearchField => _driver.FindElement(By.Name("q"));
+        private static readonly By SearchBox = By.Name("q");
 
         public HomePage(IWebDriver driver) : base(driver) { }
 
         public void EnterSearchTerm(string searchTerm)
         {
-            SearchField.Clear();
-            SearchField.SendKeys(searchTerm);
+            EnterText(SearchBox, searchTerm);
         }
 
         public void SubmitSearch()
         {
-            SearchField.Submit();
+            SubmitForm(SearchBox);
         }
 
-        public bool IsAt()
+        public bool IsTitleContains(string text)
         {
-            return _driver.Title.Contains("Google");
+            return GetTitle().Contains(text);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Tests.UI.StepDefinitions
         [AfterStep]
         public void TakeScreenshotAfterFailure(ScenarioContext scenarioContext)
         {
-            if (scenarioContext.TestError != null) // Перевірка на фейл тесту
+            if (scenarioContext.TestError != null)
             {
                 string screenshotPath = CaptureScreenshot(scenarioContext.ScenarioInfo.Title);
                 LoggerService.Info($"Screenshot saved to {screenshotPath}");

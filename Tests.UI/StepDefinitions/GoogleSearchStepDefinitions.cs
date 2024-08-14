@@ -6,8 +6,8 @@ namespace Tests.UI.StepDefinitions
     [Binding]
     public class GoogleSearchStepDefinitions
     {
-        private IWebDriver _driver;
-        private HomePage _homePage;
+        private readonly IWebDriver _driver;
+        private readonly HomePage _homePage;
         private readonly string _baseUrl;
 
         public GoogleSearchStepDefinitions()
@@ -17,11 +17,11 @@ namespace Tests.UI.StepDefinitions
             _homePage = new HomePage(_driver);
         }
 
-        [Given(@"I have navigated to the Google home page")]
-        public void GivenIHaveNavigatedToTheGoogleHomePage()
+        [Given(@"I have navigated to the ""([^""]*)"" home page")]
+        public void GivenIHaveNavigatedToTheHomePage(string google)
         {
             _homePage.NavigateTo(_baseUrl);
-            _homePage.IsAt().Should().BeTrue("Google home page is not displayed.");
+            _homePage.IsTitleContains(google).Should().BeTrue("Google home page is not displayed.");
         }
 
         [When(@"I enter ""([^""]*)"" into the search field")]
@@ -36,10 +36,10 @@ namespace Tests.UI.StepDefinitions
             _homePage.SubmitSearch();
         }
 
-        [Then(@"the search results page is displayed")]
-        public void ThenTheSearchResultsPageIsDisplayed()
+        [Then(@"the search results page must contains ""([^""]*)""")]
+        public void ThenTheSearchResultsPageMustContains(string specFlow)
         {
-            _driver.Title.Should().Contain("Google Search", "Search results page is not displayed.");
+            _homePage.IsTitleContains(specFlow).Should().BeTrue("Google home page is not displayed.");
         }
     }
 }

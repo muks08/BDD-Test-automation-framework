@@ -21,30 +21,19 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
+    - name: Install ChromeDriver
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-chromedriver
+        export CHROME_DRIVER_PATH=$(which chromedriver)
+    - name: Run ChromeDriver
+      run: |
+        ${CHROME_DRIVER_PATH} --allowed-ips=0.0.0.0 &
     - name: Restore dependencies
       run: dotnet restore
 
     - name: Build solution
       run: dotnet build --no-restore --configuration PROD
 
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-    - name: Install ChromeDriver
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y chromium-chromedriver
-        export CHROME_DRIVER_PATH=$(which chromedriver)
-
-    - name: Run ChromeDriver
-      run: |
-        ${CHROME_DRIVER_PATH} --allowed-ips=0.0.0.0 &
-
-    - name: Checkout code
-      uses: actions/checkout@v3
-
     - name: Run tests on PROD
-      run: dotnet test --no-build --verbosity normal --configuration PROD --logger "trx;LogFileName=test-results.trx"
-
+      run: dotnet test --no-build --verbosity normal --configuration PROD

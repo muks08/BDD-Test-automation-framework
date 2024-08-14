@@ -4,7 +4,7 @@ using Core.Services.Interfaces;
 
 namespace Services.API
 {
-    public class ApiService : ServiceBase
+    public class ApiService : ApiServiceBase
     {
         private readonly IHttpRequestFactoryService _requestFactory;
 

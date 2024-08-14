@@ -3,12 +3,12 @@ using System.Diagnostics;
 
 namespace Core.Services
 {
-    public abstract class ServiceBase
+    public abstract class ApiServiceBase
     {
         protected RestClient Client { get; }
         protected readonly Stopwatch Sw;
 
-        public ServiceBase(string? baseUrl)
+        public ApiServiceBase(string? baseUrl)
         {
             _ = baseUrl ?? throw new ArgumentException("Url cannot be blank!");
             Client = new RestClient(baseUrl);

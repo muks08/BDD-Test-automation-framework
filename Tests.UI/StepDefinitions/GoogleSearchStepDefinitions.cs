@@ -1,8 +1,7 @@
 using OpenQA.Selenium;
 using Services.UI.PageObjects;
-using Tests.UI.StepDefinitions;
 
-namespace Tests.StepDefinitions
+namespace Tests.UI.StepDefinitions
 {
     [Binding]
     public class GoogleSearchStepDefinitions

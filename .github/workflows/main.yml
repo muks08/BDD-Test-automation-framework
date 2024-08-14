@@ -46,4 +46,5 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Run tests on PROD
-      run: dotnet test --no-build --verbosity normal --configuration PROD
+      run: dotnet test --no-build --verbosity normal --configuration PROD --logger "trx;LogFileName=test-results.trx"
+

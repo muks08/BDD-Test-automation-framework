@@ -7,22 +7,21 @@ using System.Net;
 
 namespace Tests.API.Controllers
 {
+    [TestOf("Swagger URL: https://petstore.swagger.io")]
     public class PetControllerTests : TestBase
     {
         public PetControllerTests() { }
 
-        // Swagger URL: https://petstore.swagger.io
-
         [Test]
         [Category("Smoke")]
-        [Description("Verifies that ")]
+        [Description("Verifies that POST create a pet to (v2/pet/) returns 200, indicating a successful operation")]
         public async Task VerifyPostCreatePetReturns200()
         {
             // Arrange
             var request = RequestFactory.Create(Method.Post, Paths.PetController).AddJsonBody(PostCreatePetPayload.Set());
 
             // Act
-            var response = await ApiService.ExecuteAsync<GetPetByIdResponseModel>(request);
+            var response = await ApiService.ExecuteAsync<GetRetrievePetResponseModel>(request);
 
             // Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
@@ -30,19 +29,17 @@ namespace Tests.API.Controllers
 
         [Test]
         [Category("Smoke")]
-        [Description("Verifies that ")]
-        public async Task VerifyGetPetByIdReturns200()
+        [Description("Verifies that GET retrieve a pet to (v2/pet/{petId}) returns 200, indicating a successful operation\"")]
+        public async Task VerifyGetRetrievePetByIdReturns200()
         {
             // Arrange
             var request = RequestFactory.Create(Method.Get, Paths.PetController + "1");
 
             // Act
-            var response = await ApiService.ExecuteAsync<GetPetByIdResponseModel>(request);
+            var response = await ApiService.ExecuteAsync<GetRetrievePetResponseModel>(request);
 
             // Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
-
-
     }
 }

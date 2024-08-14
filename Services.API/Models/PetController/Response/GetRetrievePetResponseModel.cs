@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Services.API.Models.PetController.Response
 {
-    public class GetPetByIdResponseModel
+    public class GetRetrievePetResponseModel
     {
         [JsonPropertyName("id")]
         public int? Id { get; set; }

@@ -18,8 +18,8 @@ namespace Services.API.Payloads.PetController
                     Id = DataGenerator.NumericInfo.GenerateRandomInteger(10),
                     Name = DataGenerator.TextInfo.GenerateSentence(),
                 },
-                PhotoUrls = new List<string> 
-                { 
+                PhotoUrls = new List<string>
+                {
                     $"https//example.com/photo{DataGenerator.NumericInfo.GenerateRandomInteger(9999)}",
                     $"https//example.com/photo{DataGenerator.NumericInfo.GenerateRandomInteger(9999)}"
                 },

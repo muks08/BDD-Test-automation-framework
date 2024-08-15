@@ -1,5 +1,5 @@
-﻿using NLog;
-using NLog.Config;
+﻿using Core.Config;
+using NLog;
 
 namespace Core.Services
 {
@@ -9,8 +9,7 @@ namespace Core.Services
 
         static LoggerService()
         {
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            LogManager.Configuration = new XmlLoggingConfiguration(Path.Combine(baseDirectory, "Config/NLog.config"));
+            NLogConfig.ConfigureNLog();
             Logger = LogManager.GetCurrentClassLogger();
         }
 

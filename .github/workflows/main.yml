@@ -49,6 +49,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
+    - name: Install Allure Commandline
+      run: |
+        sudo apt-get install -y unzip
+        wget -q https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
+        unzip allure-2.21.0.zip
+        sudo mv allure-2.21.0 /opt/allure
+        sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+
     - name: Restore dependencies
       run: dotnet restore
 
@@ -57,3 +65,12 @@ jobs:
 
     - name: Run tests on PROD
       run: xvfb-run -a dotnet test --no-build --verbosity normal --configuration PROD
+
+    - name: Generate Allure Report
+      run: allure generate --clean -o allure-results
+
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: allure-results

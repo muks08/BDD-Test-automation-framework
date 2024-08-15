@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Test PROD
 
 on:
   push:
@@ -7,9 +7,6 @@ on:
   pull_request:
     branches:
       - master
-
-env:
-  CONFIGURATION: PROD
 
 jobs:
   build:
@@ -28,7 +25,7 @@ jobs:
       run: dotnet restore
 
     - name: Build solution
-      run: dotnet build --no-restore --configuration ${{ env.CONFIGURATION }}
+      run: dotnet build --no-restore --configuration PROD
 
   test:
     runs-on: ubuntu-latest
@@ -52,5 +49,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build solution
+      run: dotnet build --no-restore --configuration PROD
+
     - name: Run tests on PROD
-      run: xvfb-run -a dotnet test --no-build --verbosity normal --configuration ${{ env.CONFIGURATION }}
+      run: xvfb-run -a dotnet test --no-build --verbosity normal --configuration PROD

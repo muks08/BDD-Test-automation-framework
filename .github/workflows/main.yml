@@ -21,14 +21,6 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
-    - name: Install ChromeDriver
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y chromium-chromedriver
-        export CHROME_DRIVER_PATH=$(which chromedriver)
-    - name: Run ChromeDriver
-      run: |
-        ${CHROME_DRIVER_PATH} --allowed-ips=0.0.0.0 &
     - name: Restore dependencies
       run: dotnet restore
 

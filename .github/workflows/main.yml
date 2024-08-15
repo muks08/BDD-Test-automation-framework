@@ -52,9 +52,9 @@ jobs:
     - name: Install Allure Commandline
       run: |
         sudo apt-get install -y unzip
-        wget -q https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
-        unzip allure-2.21.0.zip
-        sudo mv allure-2.21.0 /opt/allure
+        wget -q https://github.com/allure-framework/allure2/releases/download/2.30.0/allure-2.30.0.zip
+        unzip allure-2.30.0.zip
+        sudo mv allure-2.30.0 /opt/allure
         sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
     - name: Restore dependencies
@@ -66,9 +66,6 @@ jobs:
     - name: Run tests on PROD
       run: xvfb-run -a dotnet test --no-build --verbosity normal --configuration PROD
       continue-on-error: true
-
-    - name: Wait for Allure results
-      run: sleep 10
 
     - name: List Allure Results
       run: ls -la /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results || echo "No allure-results directory found"

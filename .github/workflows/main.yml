@@ -66,11 +66,14 @@ jobs:
     - name: Run tests on PROD
       run: xvfb-run -a dotnet test --no-build --verbosity normal --configuration PROD
 
+    - name: List Allure Results
+      run: ls -la allure-results
+
     - name: Generate Allure Report
-      run: allure generate --clean -o allure-results
+      run: allure generate allure-results --clean -o allure-report
 
     - name: Upload Allure Report
       uses: actions/upload-artifact@v3
       with:
         name: allure-report
-        path: allure-results
+        path: allure-report

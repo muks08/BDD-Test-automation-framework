@@ -38,14 +38,14 @@ namespace Core.Services
             {
                 var response = await Client.ExecuteAsync(request);
                 Sw.Stop();
-                LoggerService.Info($"{httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
+                LoggerService.Info($"HTTP Method {httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
 
                 return response;
             }
             catch (Exception ex)
             {
                 Sw.Stop();
-                LoggerService.Info($"{httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
+                LoggerService.Info($"HTTP Method {httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
                 LoggerService.Error(ex, $"{GetType().Name} failed to make HTTP {httpMethod} request. Exception message: {ex.Message}");
                 throw new HttpRequestException($"{GetType().Name} failed to make HTTP {httpMethod} request. Exception message: {ex.Message}", ex);
             }
@@ -64,14 +64,14 @@ namespace Core.Services
                 var response = await Client.ExecuteAsync(request);
                 var model = DeserializeResponse<T>(response);
                 Sw.Stop();
-                LoggerService.Info($"{httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
+                LoggerService.Info($"HTTP Method {httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
 
                 return model;
             }
             catch (Exception ex)
             {
                 Sw.Stop();
-                LoggerService.Info($"{httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
+                LoggerService.Info($"HTTP Method {httpMethod}. Request took: {Sw.ElapsedMilliseconds} milliseconds");
                 LoggerService.Error(ex, $"{GetType().Name} failed to make HTTP {httpMethod} request. Exception message: {ex.Message}");
                 throw new HttpRequestException($"{GetType().Name} failed to make HTTP {httpMethod} request. Exception message: {ex.Message}", ex);
             }

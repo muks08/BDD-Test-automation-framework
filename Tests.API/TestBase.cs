@@ -1,10 +1,12 @@
-﻿using Core.Services.Interfaces;
+﻿using Allure.NUnit;
+using Core.Services.Interfaces;
 using Moq;
 using RestSharp;
 using Services.API;
 
 namespace Tests.API
 {
+    [AllureNUnit]
     public class TestBase
     {
         protected ApiService ApiService { get; private set; }

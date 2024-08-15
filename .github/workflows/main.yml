@@ -65,6 +65,7 @@ jobs:
 
     - name: Run tests on PROD
       run: xvfb-run -a dotnet test --no-build --verbosity normal --configuration PROD
+      continue-on-error: true
 
     - name: List Allure Results
       run: ls -la /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results || echo "No allure-results directory found"

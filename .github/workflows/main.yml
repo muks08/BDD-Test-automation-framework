@@ -67,17 +67,20 @@ jobs:
       run: xvfb-run -a dotnet test --no-build --verbosity normal --configuration PROD
       continue-on-error: true
 
+    - name: Create Allure Results dir
+      run: mkdir -p /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/allure-results
+
     - name: List Allure Results - UI
       run: ls -la /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results || echo "No allure-results directory found"
 
     - name: Copy files - UI
-      run: cp -r /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/allure-results
+      run: cp -r /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results/* /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/allure-results
 
     - name: List Allure Results - API
       run: ls -la /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.API/bin/PROD/net6.0/allure-results || echo "No allure-results directory found"
 
     - name: Copy files - API
-      run: cp -r /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.API/bin/PROD/net6.0/allure-results /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/allure-results
+      run: cp -r /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.API/bin/PROD/net6.0/allure-results/* /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/allure-results
 
     - name: List Allure Results
       run: ls -la /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/allure-results || echo "No allure-results directory found"

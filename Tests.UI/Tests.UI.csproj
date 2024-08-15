@@ -8,8 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Allure.Net.Commons" Version="2.12.1" />
-    <PackageReference Include="Allure.NUnit" Version="2.12.1" />
     <PackageReference Include="Allure.SpecFlow" Version="2.12.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageReference Include="SpecFlow" Version="3.9.74" />

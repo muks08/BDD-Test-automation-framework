@@ -71,10 +71,10 @@ jobs:
       run: ls -la /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results || echo "No allure-results directory found"
 
     - name: Generate Allure Report
-      run: allure generate --single-file /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results
+      run: allure generate --single-file /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results -o allure-report
 
     - name: Upload Allure Report
       uses: actions/upload-artifact@v3
       with:
         name: allure-report
-        path: allure-report
+        path: allure-report/index.html

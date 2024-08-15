@@ -28,7 +28,7 @@ namespace Tests.API.Controllers
             var response = await ApiService.ExecuteAsync<GetRetrievePetResponseModel>(request);
 
             // Assert
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Tests.API.Controllers
             var response = await ApiService.ExecuteAsync<GetRetrievePetResponseModel>(request);
 
             // Assert
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
         [Test]

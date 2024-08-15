@@ -73,11 +73,8 @@ jobs:
     - name: Generate Allure Report
       run: allure generate --single-file /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-results
 
-    - name: List Allure Report
-      run: ls -la /home/runner/work/BDD-Test-automation-framework/BDD-Test-automation-framework/Tests.UI/bin/PROD/net6.0/allure-report || echo "No allure-report directory found"
-
     - name: Upload Allure Report
       uses: actions/upload-artifact@v3
       with:
         name: allure-report
-        path: allure-report/index.html
+        path: allure-report

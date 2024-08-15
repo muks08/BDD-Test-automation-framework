@@ -4,7 +4,7 @@ using Services.UI.PageObjects;
 namespace Tests.UI.StepDefinitions
 {
     [Binding]
-    public class GoogleSearchStepDefinitions
+    public class GoogleSearchStepDefinitions : BaseStepDefinitions
     {
         private readonly IWebDriver _driver;
         private readonly HomePage _homePage;

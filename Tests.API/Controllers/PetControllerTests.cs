@@ -11,7 +11,6 @@ using System.Net;
 
 namespace Tests.API.Controllers
 {
-    [TestOf("Swagger URL: https://petstore.swagger.io")]
     public class PetControllerTests : TestBase
     {
         public PetControllerTests() { }

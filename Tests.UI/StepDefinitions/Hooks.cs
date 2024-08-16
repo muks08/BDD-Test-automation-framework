@@ -1,5 +1,6 @@
 ﻿using Allure.Net.Commons;
 using Core;
+using Core.Config;
 using Core.Configuration;
 using Core.Services;
 using OpenQA.Selenium;
@@ -17,6 +18,7 @@ namespace Tests.UI.StepDefinitions
         {
             Driver = WebDriverFactory.CreateDriver();
             BaseUrl = ConfigManager.AppSettings.BaseUiUrl;
+            EnvironmentPropertiesHelper.CreateAllureEnvironmentFile();
         }
 
         [AfterScenario]

@@ -6,5 +6,6 @@
         public string BaseUiUrl { get; set; }
         public string Browser { get; set; }
         public string BaseApiUrl { get; set; }
+        public string SwaggerUrl { get; set; }
     }
 }

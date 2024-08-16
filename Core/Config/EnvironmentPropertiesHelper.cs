@@ -5,7 +5,7 @@ namespace Core.Config
 {
     public class EnvironmentPropertiesHelper
     {
-        private static string EnvironmentFilePath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"allure-results\environment.properties");
+        private static string EnvironmentFilePath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"allure-results/environment.properties");
 
         public static void CreateAllureEnvironmentFile()
         {
@@ -20,15 +20,14 @@ namespace Core.Config
                 var environmentVariables = new[]
                 {
                     $"Enviroment={env}",
-                    $"Base UI URL={baseUiUrl}",
+                    $"Base_UI_URL={baseUiUrl}",
                     $"Browser={browser}",
-                    $"Base API URL={baseApiUrl}",
-                    $"Swagger URL={swaggerUrl}"
+                    $"Base_API_URL={baseApiUrl}",
+                    $"Swagger_URL={swaggerUrl}"
                 };
 
                 File.WriteAllLines(EnvironmentFilePath, environmentVariables);
-                LoggerService.Info("Allure environment file created successfully.");
-                Console.WriteLine($"------------------------- created env file {EnvironmentFilePath}");
+                LoggerService.Info($"Allure environment file created successfully in {EnvironmentFilePath}");
             }
             catch (Exception ex)
             {

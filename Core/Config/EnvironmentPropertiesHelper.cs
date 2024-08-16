@@ -28,6 +28,7 @@ namespace Core.Config
 
                 File.WriteAllLines(EnvironmentFilePath, environmentVariables);
                 LoggerService.Info("Allure environment file created successfully.");
+                Console.WriteLine($"------------------------- created env file {EnvironmentFilePath}");
             }
             catch (Exception ex)
             {

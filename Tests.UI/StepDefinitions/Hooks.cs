@@ -35,7 +35,6 @@ namespace Tests.UI.StepDefinitions
                 string screenshotPath = CaptureScreenshot(scenarioContext.ScenarioInfo.Title);
                 LoggerService.Info($"Screenshot saved to {screenshotPath}");
                 AllureApi.AddAttachment("Screenshot", "image/png", screenshotPath);
-
             }
         }
 

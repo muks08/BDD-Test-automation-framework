@@ -13,12 +13,17 @@ namespace Tests.UI.StepDefinitions
         public static IWebDriver Driver;
         public static string BaseUrl;
 
+        [BeforeTestRun]
+        public static void OneTimeSetup()
+        {
+            EnvironmentPropertiesHelper.CreateAllureEnvironmentFile();
+        }
+
         [BeforeScenario]
         public void Setup()
         {
             Driver = WebDriverFactory.CreateDriver();
             BaseUrl = ConfigManager.AppSettings.BaseUiUrl;
-            EnvironmentPropertiesHelper.CreateAllureEnvironmentFile();
         }
 
         [AfterScenario]

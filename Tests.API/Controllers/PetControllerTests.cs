@@ -11,6 +11,7 @@ using System.Net;
 
 namespace Tests.API.Controllers
 {
+    [TestFixture]
     public class PetControllerTests : TestBase
     {
         public PetControllerTests() { }

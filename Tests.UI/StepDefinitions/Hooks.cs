@@ -3,6 +3,7 @@ using Core;
 using Core.Config;
 using Core.Configuration;
 using Core.Services;
+using Core.Utils;
 using OpenQA.Selenium;
 
 namespace Tests.UI.StepDefinitions
@@ -30,6 +31,7 @@ namespace Tests.UI.StepDefinitions
         public void TearDown()
         {
             Driver.Quit();
+            AllureReportGenerator.CreateBatchFile();
         }
 
         [AfterStep]

@@ -1,4 +1,5 @@
 ﻿using Core.Config;
+using Core.Utils;
 using NUnit.Framework;
 
 namespace Tests.API.Controllers
@@ -10,6 +11,12 @@ namespace Tests.API.Controllers
         public void OneTimeSetup()
         {
             EnvironmentPropertiesHelper.CreateAllureEnvironmentFile();
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
+        {
+            AllureReportGenerator.CreateBatchFile();
         }
     }
 }

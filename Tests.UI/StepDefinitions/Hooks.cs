@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using Allure.Net.Commons;
+using Core;
 using Core.Configuration;
 using Core.Services;
 using OpenQA.Selenium;
@@ -31,10 +32,12 @@ namespace Tests.UI.StepDefinitions
             {
                 string screenshotPath = CaptureScreenshot(scenarioContext.ScenarioInfo.Title);
                 LoggerService.Info($"Screenshot saved to {screenshotPath}");
+                AllureApi.AddAttachment("Screenshot", "image/png", screenshotPath);
+
             }
         }
 
-        private string CaptureScreenshot(string scenarioTitle)
+        private static string CaptureScreenshot(string scenarioTitle)
         {
             var screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
 

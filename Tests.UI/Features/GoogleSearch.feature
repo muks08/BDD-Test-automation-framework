@@ -14,3 +14,15 @@
       | SpecFlow   |
       | Selenium    |
       | C#          |
+
+  Scenario Outline: Search for a term with fail
+    Given I have navigated to the "Google" home page
+    When I enter "<searchTerm>" into the search field
+    And I submit the search
+    Then I want to fail test with "Some failed text"
+
+        Examples:
+      | searchTerm |
+      | SpecFlow   |
+      | Selenium    |
+      | C#          |

@@ -41,5 +41,12 @@ namespace Tests.UI.StepDefinitions
         {
             _homePage.IsTitleContains(specFlow).Should().BeTrue("Google home page is not displayed.");
         }
+
+        [Then(@"I want to fail test with ""([^""]*)""")]
+        public void ThenIWantToFailTestWith(string text)
+        {
+            _homePage.IsTitleContains(text).Should().BeTrue("Google home page is not displayed.");
+        }
+
     }
 }

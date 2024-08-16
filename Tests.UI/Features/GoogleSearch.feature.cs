@@ -110,6 +110,43 @@ namespace Tests.UI.Features
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Search for a term with fail")]
+        [NUnit.Framework.TestCaseAttribute("SpecFlow", null)]
+        [NUnit.Framework.TestCaseAttribute("Selenium", null)]
+        [NUnit.Framework.TestCaseAttribute("C#", null)]
+        public void SearchForATermWithFail(string searchTerm, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("searchTerm", searchTerm);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for a term with fail", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 18
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 19
+    testRunner.Given("I have navigated to the \"Google\" home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 20
+    testRunner.When(string.Format("I enter \"{0}\" into the search field", searchTerm), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 21
+    testRunner.And("I submit the search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+    testRunner.Then("I want to fail test with \"Some failed text\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

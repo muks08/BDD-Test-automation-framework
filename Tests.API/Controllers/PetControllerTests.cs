@@ -1,5 +1,6 @@
 ﻿using Core;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using NUnit.Framework;
 using RestSharp;
 using Services.API;
@@ -65,21 +66,23 @@ namespace Tests.API.Controllers
 
             GetRetrievePetResponseModel? expectedResult = retrievePetResponse?.Data;
 
-            // Assert
-            actualResult.Id.Should().Be(expectedResult.Id);
-            actualResult.Name.Should().Be(expectedResult.Name);
-            actualResult.Status.Should().Be(expectedResult.Status);
+            using (new AssertionScope())
+            {
+                actualResult.Id.Should().Be(expectedResult.Id);
+                actualResult.Name.Should().Be(expectedResult.Name);
+                actualResult.Status.Should().Be(expectedResult.Status);
 
-            actualResult.Category.Id.Should().Be(expectedResult.Category.Id);
-            actualResult.Category.Name.Should().Be(expectedResult.Category.Name);
+                actualResult.Category.Id.Should().Be(expectedResult.Category.Id);
+                actualResult.Category.Name.Should().Be(expectedResult.Category.Name);
 
-            actualResult.PhotoUrls.First().Should().Be(expectedResult.PhotoUrls.First());
-            actualResult.PhotoUrls.Last().Should().Be(expectedResult.PhotoUrls.Last());
+                actualResult.PhotoUrls.First().Should().Be(expectedResult.PhotoUrls.First());
+                actualResult.PhotoUrls.Last().Should().Be(expectedResult.PhotoUrls.Last());
 
-            actualResult.Tags.First().Id.Should().Be(expectedResult.Tags.First().Id);
-            actualResult.Tags.First().Name.Should().Be(expectedResult.Tags.First().Name);
-            actualResult.Tags.Last().Id.Should().Be(expectedResult.Tags.Last().Id);
-            actualResult.Tags.Last().Name.Should().Be(expectedResult.Tags.Last().Name);
+                actualResult.Tags.First().Id.Should().Be(expectedResult.Tags.First().Id);
+                actualResult.Tags.First().Name.Should().Be(expectedResult.Tags.First().Name);
+                actualResult.Tags.Last().Id.Should().Be(expectedResult.Tags.Last().Id);
+                actualResult.Tags.Last().Name.Should().Be(expectedResult.Tags.Last().Name);
+            }
 
             // Delete a Pet
             var deletePetRequest = RequestFactory.Create(Method.Delete, Paths.PetController + actualResult?.Id);

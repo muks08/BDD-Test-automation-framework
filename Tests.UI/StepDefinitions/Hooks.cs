@@ -18,6 +18,7 @@ namespace Tests.UI.StepDefinitions
         public static void OneTimeSetup()
         {
             EnvironmentPropertiesHelper.CreateAllureEnvironmentFile();
+            AllureReportGenerator.CreateBatchFiles();
         }
 
         [BeforeScenario]
@@ -31,7 +32,6 @@ namespace Tests.UI.StepDefinitions
         public void TearDown()
         {
             Driver.Quit();
-            AllureReportGenerator.CreateBatchFile();
         }
 
         [AfterStep]

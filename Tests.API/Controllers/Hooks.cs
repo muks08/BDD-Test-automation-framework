@@ -11,12 +11,10 @@ namespace Tests.API.Controllers
         public void OneTimeSetup()
         {
             EnvironmentPropertiesHelper.CreateAllureEnvironmentFile();
+            AllureReportGenerator.CreateBatchFiles();
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-            AllureReportGenerator.CreateBatchFile();
-        }
+        public void OneTimeTearDown() { }
     }
 }

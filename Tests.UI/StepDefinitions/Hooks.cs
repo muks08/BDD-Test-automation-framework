@@ -50,7 +50,7 @@ namespace Tests.UI.StepDefinitions
             var screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
 
             var projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            var screenshotsDirectory = Path.Combine(projectDirectory, "Screenshots");
+            var screenshotsDirectory = Path.Combine(projectDirectory, "screenshots");
 
             if (!Directory.Exists(screenshotsDirectory))
             {

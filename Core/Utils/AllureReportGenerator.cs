@@ -10,10 +10,11 @@ namespace Core.Utils
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string apiPath = Path.GetFullPath(Path.Combine(basePath, @$"..\..\..\..\Tests.API\bin\{env}\net6.0\allure-results"));
             string uiPath = Path.GetFullPath(Path.Combine(basePath, @$"..\..\..\..\Tests.UI\bin\{env}\net6.0\allure-results"));
-            string generatebatPath = Path.Combine(basePath, @"generate_allure_report.bat");
+            string generateBatPath = Path.Combine(basePath, @"generate_allure_report.bat");
             string cleanBatPath = Path.Combine(basePath, @"clean_allure_report.bat");
             string resultsDirPath = Path.Combine(basePath, @"all-tests-allure-results\");
             string allureReportPath = Path.Combine(basePath, @"allure-report\");
+            string screenshotsPath = Path.Combine(basePath, @"screenshots\");
 
             if (!Directory.Exists(resultsDirPath))
             {
@@ -30,8 +31,8 @@ allure generate --single-file all-tests-allure-results
 pause
                 ";
 
-            File.WriteAllText(generatebatPath, generateReportBatchContent);
-            Console.WriteLine($"Batch file created at: {generatebatPath}");
+            File.WriteAllText(generateBatPath, generateReportBatchContent);
+            Console.WriteLine($"Batch file created at: {generateBatPath}");
 
             string cleanReportBatchContent =
                 $@"@echo off
@@ -39,6 +40,7 @@ rmdir /s /q ""{allureReportPath}""
 rmdir /s /q ""{apiPath}""
 rmdir /s /q ""{uiPath}""
 rmdir /s /q ""{resultsDirPath}""
+rmdir /s /q ""{screenshotsPath}""
 pause
                 ";
 
